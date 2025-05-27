@@ -4,7 +4,7 @@
  */
 package View;
 
-import Controller.logIncontroller;
+import Controller.logInController;
 import java.awt.Color;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
@@ -40,10 +40,10 @@ public class SignUp extends javax.swing.JFrame {
         lname = new javax.swing.JTextField();
         number = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        loginp = new javax.swing.JButton();
         password = new javax.swing.JPasswordField();
         cpassword = new javax.swing.JPasswordField();
         SignUpBtn = new javax.swing.JButton();
+        gotoLogin = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -130,15 +130,6 @@ public class SignUp extends javax.swing.JFrame {
         jLabel8.setForeground(new java.awt.Color(200, 200, 200));
         jLabel8.setText("Already have an account?");
 
-        loginp.setBackground(new java.awt.Color(26, 60, 52));
-        loginp.setForeground(new java.awt.Color(200, 200, 200));
-        loginp.setText("Login");
-        loginp.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                loginpMouseClicked(evt);
-            }
-        });
-
         password.setBackground(new java.awt.Color(204, 204, 204));
         password.setText("Password");
         password.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -163,6 +154,15 @@ public class SignUp extends javax.swing.JFrame {
 
         SignUpBtn.setText("SignUp");
 
+        gotoLogin.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        gotoLogin.setForeground(new java.awt.Color(255, 255, 255));
+        gotoLogin.setText("LogIn");
+        gotoLogin.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                gotoLoginMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout RightLayout = new javax.swing.GroupLayout(Right);
         Right.setLayout(RightLayout);
         RightLayout.setHorizontalGroup(
@@ -184,7 +184,7 @@ public class SignUp extends javax.swing.JFrame {
                                 .addGap(43, 43, 43)
                                 .addComponent(jLabel8)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(loginp))
+                                .addComponent(gotoLogin))
                             .addGroup(RightLayout.createSequentialGroup()
                                 .addGap(77, 77, 77)
                                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -220,9 +220,9 @@ public class SignUp extends javax.swing.JFrame {
                 .addGap(32, 32, 32)
                 .addGroup(RightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(loginp, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(37, 37, 37))
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 382, Short.MAX_VALUE)
+                    .addComponent(gotoLogin))
+                .addGap(38, 38, 38))
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 389, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -276,13 +276,44 @@ public class SignUp extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_lnameActionPerformed
 
-    private void numberFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_numberFocusGained
+    
+
+    private void cpasswordFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cpasswordFocusLost
         // TODO add your handling code here:
-        if(number.getText().equals("Phone number")){
-            number.setForeground(Color.black);
-            number.setText("");
+        String cpass = new String(cpassword.getPassword());
+        if(cpassword.getText().isEmpty()){
+            cpassword.setText("Confirm password");
+            cpassword.setEchoChar((char)0);
         }
-    }//GEN-LAST:event_numberFocusGained
+    }//GEN-LAST:event_cpasswordFocusLost
+
+    private void cpasswordFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cpasswordFocusGained
+        // TODO add your handling code here:
+        if(cpassword.getText().equals("Confirm password")){
+            cpassword.setText("");
+            cpassword.setEchoChar('*');
+        }
+    }//GEN-LAST:event_cpasswordFocusGained
+
+    private void passwordFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_passwordFocusLost
+        // TODO add your handling code here:
+        if(password.getText().isEmpty()){
+            password.setText("Password");
+            password.setEchoChar((char)0);
+        }
+    }//GEN-LAST:event_passwordFocusLost
+
+    private void passwordFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_passwordFocusGained
+        // TODO add your handling code here:
+        if(password.getText().equals("Password")){
+            password.setText("");
+            password.setEchoChar('*');
+        }
+    }//GEN-LAST:event_passwordFocusGained
+
+    private void numberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numberActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_numberActionPerformed
 
     private void numberFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_numberFocusLost
         // TODO add your handling code here:
@@ -300,50 +331,20 @@ public class SignUp extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_numberFocusLost
 
-    private void numberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numberActionPerformed
+    private void numberFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_numberFocusGained
         // TODO add your handling code here:
-    }//GEN-LAST:event_numberActionPerformed
+        if(number.getText().equals("Phone number")){
+            number.setForeground(Color.black);
+            number.setText("");
+        }
+    }//GEN-LAST:event_numberFocusGained
 
-    private void loginpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginpMouseClicked
-        LogIn loginForm = new LogIn();
-        logIncontroller c = new logIncontroller(loginForm);
+    private void gotoLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_gotoLoginMouseClicked
+        LogIn logForm = new LogIn();
+        logInController c = new logInController(logForm);
         c.open();
-
-    }//GEN-LAST:event_loginpMouseClicked
-
-    private void passwordFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_passwordFocusGained
-        // TODO add your handling code here:
-        if(password.getText().equals("Password")){
-            password.setText("");
-            password.setEchoChar('*');
-        }
-    }//GEN-LAST:event_passwordFocusGained
-
-    private void passwordFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_passwordFocusLost
-        // TODO add your handling code here:
-        if(password.getText().isEmpty()){
-            password.setText("Password");
-            password.setEchoChar((char)0);
-        }
-    }//GEN-LAST:event_passwordFocusLost
-
-    private void cpasswordFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cpasswordFocusGained
-        // TODO add your handling code here:
-        if(cpassword.getText().equals("Confirm password")){
-            cpassword.setText("");
-            cpassword.setEchoChar('*');
-        }
-    }//GEN-LAST:event_cpasswordFocusGained
-
-    private void cpasswordFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cpasswordFocusLost
-        // TODO add your handling code here:
-        String cpass = new String(cpassword.getPassword());
-        if(cpassword.getText().isEmpty()){
-            cpassword.setText("Confirm password");
-            cpassword.setEchoChar((char)0);
-        }
-
-    }//GEN-LAST:event_cpasswordFocusLost
+        dispose();
+    }//GEN-LAST:event_gotoLoginMouseClicked
 
     /**
      * @param args the command line arguments
@@ -385,13 +386,13 @@ public class SignUp extends javax.swing.JFrame {
     private javax.swing.JButton SignUpBtn;
     private javax.swing.JPasswordField cpassword;
     private javax.swing.JTextField fname;
+    private javax.swing.JLabel gotoLogin;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField lname;
-    private javax.swing.JButton loginp;
     private javax.swing.JTextField number;
     private javax.swing.JPasswordField password;
     // End of variables declaration//GEN-END:variables
@@ -400,7 +401,7 @@ public class SignUp extends javax.swing.JFrame {
     public String getNumber(){return number.getText();}
     public String getPassword(){return password.getText().equals(cpassword.getText())? password.getText() : "mismatch";}
 
-public void addAdduserListener(ActionListener listener) {
+    public void addAdduserListener(ActionListener listener) {
         SignUpBtn.addActionListener(listener);
     }
     
